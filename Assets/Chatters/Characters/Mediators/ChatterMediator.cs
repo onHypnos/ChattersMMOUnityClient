@@ -1,4 +1,5 @@
-﻿using Chatters.Characters.CharacterStates;
+﻿using Chatters.Characters.BattleProfiles;
+using Chatters.Characters.CharacterStates;
 using Chatters.Characters.Services;
 using Chatters.Services.SaveLoad;
 using Chatters.Services.UI;
@@ -18,14 +19,17 @@ namespace Chatters.Characters.Mediators
         }
 
         private Ctx _ctx;
-        [SerializeField] protected ChatterUIManager UIManagerManager;
         private Vector3 _spawningDestinationPoint;
+        private ChatterBattleProfile _bProfile => _profile as ChatterBattleProfile;
+        
+        [SerializeField] protected ChatterUIManager UIManagerManager;
 
         public void Init(Ctx ctx)
         {
             _ctx = ctx;
             _spawningDestinationPoint = _ctx.SpawningDestinationPoint;
-            base.BaseInit(_ctx.ID, _ctx.Runner,_ctx.UiMediator);
+            BaseInit(_ctx.ID, _ctx.Runner,_ctx.UiMediator);
+            _bProfile.Init();
             UIManagerManager.Init(_serviceContainer);
         }
 
@@ -45,6 +49,9 @@ namespace Chatters.Characters.Mediators
         {
             UIManagerManager.ChangeNickname(containerDisplayName);
             UIManagerManager.ChangeColor();
+            _ctx.ID = chatterData.ID.GetHashCode();
+            _bProfile.Init();
+            
             var visual = _visual as ChatterVisual;
             if (visual != null) visual.SetupChatterVisual(chatterData.SavedVisual);
         }

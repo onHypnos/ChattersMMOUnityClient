@@ -1,6 +1,7 @@
 ﻿using System;
 using Chatters.Characters.CharacterStates;
 using Chatters.Characters.Services;
+using Chatters.Data;
 using Chatters.Services.UI;
 using Chatters.Services.Updater;
 using UnityEngine;
@@ -16,6 +17,7 @@ namespace Chatters.Characters.Mediators
             public UpdateRunner Runner;
             public UIMediator UiMediator;
             [FormerlySerializedAs("SpriteLayer")] public int SpriteLayerOrder;
+            public EnemyProfileConfig EnemyProfileConfig;
         }
 
         private Ctx _ctx;
