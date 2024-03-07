@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cdd5f7e3e4949dd91b1fa9f5cfd4858, type: 3}
+  m_Name: Slime
+  m_EditorClassIdentifier: 
+  Name: Slime
+  BaseHealth: 10
+  HealthIncreaseWithLevel: 5
+  BaseDamage: 1
+  DamageIncreaseWithLevel: 0
+  Example: {fileID: 5505470082072791699, guid: 9f79b00bfd304d74eb641da606eca12b, type: 3}
