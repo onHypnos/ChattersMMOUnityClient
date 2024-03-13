@@ -33,6 +33,7 @@ namespace Chatters.Characters.Fabrics
             enemy.Init(new EnemyMediator.Ctx
             {
                 ID = _entityNumerator.GetNewID(),
+                EnemyProfileConfig = config,
                 Runner = _runner,
                 UiMediator = _uiMediator,
                 SpriteLayerOrder = layerNumber

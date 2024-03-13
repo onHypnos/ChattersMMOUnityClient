@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Chatters.Characters.BattleProfiles;
 using Chatters.Characters.CharacterStates;
 using Chatters.Characters.Services;
 using Chatters.Services.UI;
@@ -54,9 +55,9 @@ namespace Chatters.Characters.Mediators
             _currentState?.ExecuteState(_runner.ChattersTimeScale * Time.fixedDeltaTime);
         }
 
-        public void SubscribeOnDeath(Action<BaseMediator> despawnEnemy)
+        public void SubscribeOnDeath(Action<BaseMediator> despawnCallback)
         {
-            _serviceContainer.Actions.OnDeathAnimationEnd += despawnEnemy;
+            _serviceContainer.Actions.OnDeathAnimationEnd += despawnCallback;
         }
 
 
