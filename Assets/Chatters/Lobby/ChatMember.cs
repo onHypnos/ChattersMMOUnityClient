@@ -11,7 +11,8 @@ namespace Chatters.Lobby
     [Serializable]
     public class ChatMember
     {
-        public Time ExitLobbyTime = new Time();
+        public float ExitLobbyTime;
+        public string ID;
         
         [FormerlySerializedAs("BaseMediator")] public ChatterMediator Mediator;
 
@@ -23,10 +24,15 @@ namespace Chatters.Lobby
             Mediator.LoadSetup(chatterData, containerDisplayName);
         }
 
-        public ChatMember UpdateWithMessage(ref ChatMemberContainer chatMemberContainer)
+        public ChatMember UpdateWithMessage(ChatMemberContainer chatMemberContainer)
         {
             Mediator.ShowMessage(chatMemberContainer.Message);
             return this;
+        }
+
+        public void DisposeMember()
+        {
+            Mediator.Dispose();
         }
     }
 }

@@ -282,12 +282,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4978433499258303934}
   - component: {fileID: 4217045972906149128}
-  - component: {fileID: 4819784177583395339}
+  - component: {fileID: 5542202555827100061}
   - component: {fileID: 4890643229270604588}
   - component: {fileID: 3129358845571465318}
   - component: {fileID: 439089980536877943}
   - component: {fileID: 919959801329744862}
-  - component: {fileID: -7894943738654168007}
+  - component: {fileID: 5843629449768126495}
   m_Layer: 10
   m_Name: ChatterCharacter
   m_TagString: Untagged
@@ -328,12 +328,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _id: 0
-  _characterMovement: {fileID: 4819784177583395339}
+  _characterMovement: {fileID: 5542202555827100061}
   _visual: {fileID: 919959801329744862}
   _collisions: {fileID: 4890643229270604588}
-  _profile: {fileID: -7894943738654168007}
+  _profile: {fileID: 5843629449768126495}
   UIManagerManager: {fileID: 3129358845571465318}
---- !u!114 &4819784177583395339
+--- !u!114 &5542202555827100061
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -342,7 +342,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1694762662939173193}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a306d645fa226e4db5ba082fff5bb41, type: 3}
+  m_Script: {fileID: 11500000, guid: a4eb0f5a30f0edb42adb4ab1ae38aeae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _characterController: {fileID: 439089980536877943}
@@ -423,8 +423,8 @@ MonoBehaviour:
     Particle: {fileID: 6194338529815347020}
   - Id: MoveDust
     Particle: {fileID: 3473156423226230806}
-  Builder: {fileID: 3821128155938713427}
---- !u!114 &-7894943738654168007
+  _library: {fileID: 3821128157027316052}
+--- !u!114 &5843629449768126495
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -433,13 +433,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1694762662939173193}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 410f3411446744bab0f31559330db1dd, type: 3}
+  m_Script: {fileID: 11500000, guid: 0f32e38b378d4900a0fef80c5f93b529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _className: 
   _maximumHealth: 0
   _currentHealth: 0
-  _baseDamage: 0
+  _attackPower: 0
+  _defence: 0
 --- !u!1 &2319034457782855191
 GameObject:
   m_ObjectHideFlags: 0
@@ -794,6 +795,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 375063816128229653, guid: db6a26883ded4b24fa22b9a91346e370, type: 3}
+    - {fileID: 375063816128229649, guid: db6a26883ded4b24fa22b9a91346e370, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -809,17 +811,6 @@ ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 944805460, guid: db6a26883ded4b24fa22b9a91346e370, type: 3}
   m_PrefabInstance: {fileID: 3473156424162647618}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3821128155938713427 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 375063816128229649, guid: db6a26883ded4b24fa22b9a91346e370, type: 3}
-  m_PrefabInstance: {fileID: 3473156424162647618}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3821128155938713449}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ea8d3a199704f47a694ed6bcf91e28f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &3821128155938713428 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 375063816128229654, guid: db6a26883ded4b24fa22b9a91346e370, type: 3}

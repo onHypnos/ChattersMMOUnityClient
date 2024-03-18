@@ -35,5 +35,10 @@ namespace Chatters.Lobby
         {
             activity.Disable();
         }
+
+        public BaseMediator GetTarget()
+        {
+            return null;
+        }
     }
 }

@@ -74,9 +74,9 @@ namespace Chatters.Services.Connections
             _instance.ChatType = "twitch";
             _instance.Channel = obj.channel;
 
-            Debug.Log($"Get Message from {_instance.DisplayName}: {_instance.Message}");
+            //Debug.Log($"Get Message from {_instance.DisplayName}: {_instance.Message}");
             OnChatterMessage?.Invoke(_instance);
-            Debug.Log($"Message from {_instance.DisplayName} end action");
+            //Debug.Log($"Message from {_instance.DisplayName} end action");
 
         }
 

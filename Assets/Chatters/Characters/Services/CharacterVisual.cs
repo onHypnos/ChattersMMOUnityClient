@@ -10,7 +10,7 @@ namespace Chatters.Characters.Services
 {
     public class CharacterVisual : MonoBehaviour
     {
-        [FormerlySerializedAs("BaseCharacterAnimator")] public CharacterAnimator CharacterAnimator;
+        public CharacterAnimator CharacterAnimator;
         public SpriteLibrary Library;
         public SpriteRenderer Renderer;
         public List<ParticlePair> Particles;
@@ -19,7 +19,6 @@ namespace Chatters.Characters.Services
         {
             CharacterAnimator.Init(this);
         }
-
 
         public void SetLayerOrder(int layerOrder)
         {

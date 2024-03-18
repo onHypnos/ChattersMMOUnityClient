@@ -4,6 +4,7 @@ using System.Linq;
 using Assets.PixelFantasy.PixelHeroes.Common.Scripts.CollectionScripts;
 using Assets.PixelFantasy.PixelHeroes.Common.Scripts.Utils;
 using UnityEngine;
+using UnityEngine.U2D.Animation;
 
 
 namespace Assets.PixelFantasy.PixelHeroes.Common.Scripts.CharacterScripts
@@ -29,7 +30,7 @@ namespace Assets.PixelFantasy.PixelHeroes.Common.Scripts.CharacterScripts
         public Texture2D Texture { get; private set; }
         private Dictionary<string, Sprite> _sprites;
 
-        public void Rebuild(string changed = null)
+        public SpriteLibraryAsset Rebuild(string changed = null)
         {
             var width = SpriteCollection.Layers[0].Textures[0].width;
             var height = SpriteCollection.Layers[0].Textures[0].height;
@@ -116,7 +117,7 @@ namespace Assets.PixelFantasy.PixelHeroes.Common.Scripts.CharacterScripts
                 }
             }
 
-            var spriteLibraryAsset = ScriptableObject.CreateInstance<UnityEngine.U2D.Animation.SpriteLibraryAsset>();
+            SpriteLibraryAsset spriteLibraryAsset = ScriptableObject.CreateInstance<UnityEngine.U2D.Animation.SpriteLibraryAsset>();
 
             foreach (var sprite in _sprites)
             {
@@ -126,6 +127,7 @@ namespace Assets.PixelFantasy.PixelHeroes.Common.Scripts.CharacterScripts
             }
 
             SpriteLibrary.spriteLibraryAsset = spriteLibraryAsset;
+            return spriteLibraryAsset;
         }
 
         private void CapeOverlay(Color32[] cape)

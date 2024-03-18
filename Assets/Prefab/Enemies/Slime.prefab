@@ -134,7 +134,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5031340756110653711}
   - component: {fileID: 5505470082072791699}
-  - component: {fileID: 86471950756665135}
+  - component: {fileID: 3650704047086618642}
   - component: {fileID: 409224098434851026}
   - component: {fileID: 2646066606979307416}
   - component: {fileID: 3033667437040488020}
@@ -175,11 +175,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _id: 0
-  _characterMovement: {fileID: 86471950756665135}
+  _characterMovement: {fileID: 3650704047086618642}
   _visual: {fileID: 545754881527964210}
   _collisions: {fileID: 3033667437040488020}
   _profile: {fileID: 2166824035753337911}
---- !u!114 &86471950756665135
+--- !u!114 &3650704047086618642
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -188,12 +188,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1598417452388806092}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a306d645fa226e4db5ba082fff5bb41, type: 3}
+  m_Script: {fileID: 11500000, guid: a4eb0f5a30f0edb42adb4ab1ae38aeae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _characterController: {fileID: 2646066606979307416}
-  MaximumSpeed: 3
-  Speed: 3
+  MaximumSpeed: 5
+  Speed: 5
 --- !u!114 &409224098434851026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,9 +265,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f32e38b378d4900a0fef80c5f93b529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _className: 
   _maximumHealth: 1
   _currentHealth: 1
-  _baseDamage: 0
+  _attackPower: 0
+  _defence: 0
 --- !u!1 &3068960180510754958
 GameObject:
   m_ObjectHideFlags: 0

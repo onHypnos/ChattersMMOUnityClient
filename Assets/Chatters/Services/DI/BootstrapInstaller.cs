@@ -18,6 +18,8 @@ namespace Chatters.Services.DI
         
         public override void InstallBindings()
         {
+            Application.targetFrameRate = 60;
+            
             var saveLoad = BindSaveLoad();
             BindRunner();
             var ui = BindUI();

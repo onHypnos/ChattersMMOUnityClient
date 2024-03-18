@@ -1,27 +1,40 @@
 ﻿using Assets.PixelFantasy.PixelHeroes.Common.Scripts.CharacterScripts;
+using UnityEngine;
+using UnityEngine.U2D.Animation;
 
 namespace Chatters.Characters.Services
 {
     public class ChatterVisual : CharacterVisual
     {
-        public CharacterBuilder Builder;
+        private CharacterBuilder _builder;
+        private SpriteLibraryAsset _currentAsset;
+        [SerializeField] private SpriteLibrary _library;
+
+        public void SetupBuilder(CharacterBuilder ctxCharacterBuilder)
+        {
+            _builder = ctxCharacterBuilder;
+        }
         
         public void SetupChatterVisual(Chatters.Services.SaveLoad.CharacterVisual playerSaveSavedVisual)
         {
-            Builder.Head = playerSaveSavedVisual.Head;
-            Builder.Ears = playerSaveSavedVisual.Ears;
-            Builder.Eyes = playerSaveSavedVisual.Eyes;
-            Builder.Body = playerSaveSavedVisual.Body; 
-            Builder.Hair = playerSaveSavedVisual.Hair;
-            Builder.Armor = playerSaveSavedVisual.Armor;
-            Builder.Helmet = playerSaveSavedVisual.Helmet;
-            Builder.Weapon = playerSaveSavedVisual.Weapon;
-            Builder.Shield = playerSaveSavedVisual.Shield;
-            Builder.Cape = playerSaveSavedVisual.Cape;
-            Builder.Back = playerSaveSavedVisual.Back;
-            Builder.Mask = playerSaveSavedVisual.Mask;
-            Builder.Horns = playerSaveSavedVisual.Horns;
-            Builder.Rebuild();
+            Destroy(_currentAsset);
+            _builder.SpriteLibrary = _library;
+            _builder.Head = playerSaveSavedVisual.Head;
+            _builder.Ears = playerSaveSavedVisual.Ears;
+            _builder.Eyes = playerSaveSavedVisual.Eyes;
+            _builder.Body = playerSaveSavedVisual.Body; 
+            _builder.Hair = playerSaveSavedVisual.Hair;
+            _builder.Armor = playerSaveSavedVisual.Armor;
+            _builder.Helmet = playerSaveSavedVisual.Helmet;
+            _builder.Weapon = playerSaveSavedVisual.Weapon;
+            _builder.Shield = playerSaveSavedVisual.Shield;
+            _builder.Cape = playerSaveSavedVisual.Cape;
+            _builder.Back = playerSaveSavedVisual.Back;
+            _builder.Mask = playerSaveSavedVisual.Mask;
+            _builder.Horns = playerSaveSavedVisual.Horns;
+            _currentAsset = _builder.Rebuild();
         }
+        
+        
     }
 }

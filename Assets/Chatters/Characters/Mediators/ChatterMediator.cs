@@ -1,6 +1,9 @@
-﻿using Chatters.Characters.BattleProfiles;
+﻿using Assets.PixelFantasy.PixelHeroes.Common.Scripts.CharacterScripts;
+using Chatters.Characters.BattleProfiles;
 using Chatters.Characters.CharacterStates;
+using Chatters.Characters.Fabrics;
 using Chatters.Characters.Services;
+using Chatters.Interfaces;
 using Chatters.Services.SaveLoad;
 using Chatters.Services.UI;
 using Chatters.Services.Updater;
@@ -16,6 +19,8 @@ namespace Chatters.Characters.Mediators
             public UpdateRunner Runner;
             public UIMediator UiMediator;
             public Vector3 SpawningDestinationPoint;
+            public ITargetProvider TargetProvider { get; set; }
+            public CharacterBuilder CharacterBuilder { get; set; }
         }
 
         private Ctx _ctx;
@@ -27,7 +32,7 @@ namespace Chatters.Characters.Mediators
         {
             _ctx = ctx;
             _spawningDestinationPoint = _ctx.SpawningDestinationPoint;
-            BaseInit(_ctx.ID, _ctx.Runner,_ctx.UiMediator);
+            BaseInit(_ctx.ID, _ctx.Runner,_ctx.UiMediator, _ctx.TargetProvider);
             UIManagerManager.Init(_serviceContainer);
         }
 
@@ -50,12 +55,20 @@ namespace Chatters.Characters.Mediators
             _ctx.ID = chatterData.ID.GetHashCode();
             
             var visual = _visual as ChatterVisual;
-            if (visual != null) visual.SetupChatterVisual(chatterData.SavedVisual);
+            if (visual != null)
+            {
+                visual.SetupBuilder(_ctx.CharacterBuilder);
+                visual.SetupChatterVisual(chatterData.SavedVisual);
+            }
         }
 
         public void ShowMessage(string message)
         {
             UIManagerManager.ShowMessage(message);
         }
+
+        
+
+        
     }
 }
