@@ -42,9 +42,9 @@ namespace Chatters.Characters.Behaviours
         {
             base.Execute(deltaTime);
             _movingTimeRemain -= deltaTime;
-            if (MediatorServiceContainer.CharacterMovement)
+            if (MediatorServiceContainer.BaseCharacterMovement)
             {
-                MediatorServiceContainer.CharacterMovement.Move(_ctx.Direction, deltaTime);
+                MediatorServiceContainer.BaseCharacterMovement.Move(_ctx.Direction, deltaTime);
             }
         }
 

@@ -15,6 +15,7 @@ namespace Chatters.Characters.Services
         
         public Coroutine ShowingMessageCoroutine;
         
+        
         public override void Init(BaseMediator.ServiceContainer serviceContainer)
         {
             base.Init(serviceContainer);

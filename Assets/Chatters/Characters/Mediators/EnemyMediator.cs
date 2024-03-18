@@ -16,8 +16,8 @@ namespace Chatters.Characters.Mediators
             public int ID;
             public UpdateRunner Runner;
             public UIMediator UiMediator;
-            [FormerlySerializedAs("SpriteLayer")] public int SpriteLayerOrder;
-            public EnemyProfileConfig EnemyProfileConfig;
+            public int SpriteLayerOrder;
+            public EnemyConfig EnemyConfig;
         }
 
         private Ctx _ctx;

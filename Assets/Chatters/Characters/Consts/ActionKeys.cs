@@ -1,4 +1,4 @@
-﻿namespace Chatters.Characters.Services
+﻿namespace Chatters.Characters.Consts
 {
     public static class ActionKeys
     {

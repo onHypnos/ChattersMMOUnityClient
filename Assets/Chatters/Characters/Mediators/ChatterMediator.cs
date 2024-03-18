@@ -20,7 +20,6 @@ namespace Chatters.Characters.Mediators
 
         private Ctx _ctx;
         private Vector3 _spawningDestinationPoint;
-        private ChatterBattleProfile _bProfile => _profile as ChatterBattleProfile;
         
         [SerializeField] protected ChatterUIManager UIManagerManager;
 
@@ -29,7 +28,6 @@ namespace Chatters.Characters.Mediators
             _ctx = ctx;
             _spawningDestinationPoint = _ctx.SpawningDestinationPoint;
             BaseInit(_ctx.ID, _ctx.Runner,_ctx.UiMediator);
-            _bProfile.Init();
             UIManagerManager.Init(_serviceContainer);
         }
 
@@ -50,7 +48,6 @@ namespace Chatters.Characters.Mediators
             UIManagerManager.ChangeNickname(containerDisplayName);
             UIManagerManager.ChangeColor();
             _ctx.ID = chatterData.ID.GetHashCode();
-            _bProfile.Init();
             
             var visual = _visual as ChatterVisual;
             if (visual != null) visual.SetupChatterVisual(chatterData.SavedVisual);

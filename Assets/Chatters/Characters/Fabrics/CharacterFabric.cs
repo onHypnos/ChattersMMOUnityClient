@@ -1,13 +1,10 @@
 using Chatters.Characters.Mediators;
-using Chatters.DI;
 using Chatters.Services.DamageExecutor;
-using Chatters.Services.DI;
 using Chatters.Services.UI;
 using Chatters.Services.Updater;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Chatters.Characters
+namespace Chatters.Characters.Fabrics
 {
     public class CharacterFabric : MonoBehaviour
     {

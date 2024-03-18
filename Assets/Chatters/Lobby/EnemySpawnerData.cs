@@ -13,7 +13,7 @@ namespace Chatters.Lobby
         public List<EnemyMediator> ActiveInstances =new();
         public Queue<EnemyMediator> DisabledInstances =new();
         
-        public EnemyProfileConfig Enemy;
+        public EnemyConfig Enemy;
         public int AmountCap;
         public int LayerInitialNumber = 1000;
         public Transform Parent;

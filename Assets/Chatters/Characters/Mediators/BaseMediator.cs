@@ -21,7 +21,7 @@ namespace Chatters.Characters.Mediators
         [SerializeField] protected CharacterMovement _characterMovement;
         [SerializeField] protected CharacterVisual _visual;
         [SerializeField] protected CharacterCollisionDetector _collisions;
-        [SerializeField] protected BattleProfile _profile;
+        [SerializeField] protected Profile _profile;
         protected Dictionary<Type, BaseCharacterState> _states = new();
 
         private BaseCharacterState _currentState;
@@ -65,25 +65,25 @@ namespace Chatters.Characters.Mediators
         {
             public UIMediator UIMediator { get; }
             public BaseMediator BaseMediator { get; }
-            public CharacterMovement CharacterMovement { get; }
+            public CharacterMovement BaseCharacterMovement { get; }
             public CharacterVisual Visual { get; }
             public CharacterCollisionDetector Collisions { get; }
             public BattleActions Actions { get; }
-            public BattleProfile Profile { get; }
+            public Profile Profile { get; }
 
             public ServiceContainer(BaseMediator baseMediator,
-                CharacterMovement characterMovement,
+                CharacterMovement baseCharacterMovement,
                 CharacterVisual visual,
                 CharacterCollisionDetector collisions,
                 UIMediator uiMediator,
                 BattleActions actions,
-                BattleProfile profile)
+                Profile profile)
             {
                 UIMediator = uiMediator;
                 Actions = actions;
                 Profile = profile;
                 BaseMediator = baseMediator;
-                CharacterMovement = characterMovement;
+                BaseCharacterMovement = baseCharacterMovement;
                 Visual = visual;
                 Collisions = collisions;
             }

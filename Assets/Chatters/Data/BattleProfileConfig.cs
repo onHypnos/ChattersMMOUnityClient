@@ -7,14 +7,12 @@ namespace Chatters.Data
     [CreateAssetMenu(menuName = "NPCEnemy/CreateBattleProfile", fileName = "BattleConfig", order = 0)]
     public class BattleProfileConfig : ScriptableObject
     {
-        public string Name;
-
         [Header("ProfileSettings")]
-        [SerializeField] public float BaseHealth;
-        [SerializeField] public float HealthIncreaseWithLevel;
-        [SerializeField] public float BaseDamage;
-        [SerializeField] public float DamageIncreaseWithLevel;
-        
+        [SerializeField] private float _baseHealth;
+        [SerializeField] private float _healthIncreaseWithLevel;
+        [SerializeField] private float _baseDamage;
+        [SerializeField] private float _baseArmour;
+        [SerializeField] private float _damageIncreaseWithLevel;
         
     }
 }

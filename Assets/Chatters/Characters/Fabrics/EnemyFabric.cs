@@ -27,13 +27,13 @@ namespace Chatters.Characters.Fabrics
             _damageGlobalExecutor = damageGlobalExecutor;
         }
 
-        public EnemyMediator GetEnemyInstance(EnemyProfileConfig config, Transform parent, int layerNumber)
+        public EnemyMediator GetEnemyInstance(EnemyConfig config, Transform parent, int layerNumber)
         {
             var enemy = Instantiate(config.Example, parent);
             enemy.Init(new EnemyMediator.Ctx
             {
                 ID = _entityNumerator.GetNewID(),
-                EnemyProfileConfig = config,
+                EnemyConfig = config,
                 Runner = _runner,
                 UiMediator = _uiMediator,
                 SpriteLayerOrder = layerNumber

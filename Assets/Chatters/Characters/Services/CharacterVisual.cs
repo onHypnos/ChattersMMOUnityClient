@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using Assets.PixelFantasy.PixelHeroes.Common.Scripts.CharacterScripts;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.U2D.Animation;
 
 namespace Chatters.Characters.Services
 {
     public class CharacterVisual : MonoBehaviour
     {
-        public CharacterAnimator CharacterAnimator;
+        [FormerlySerializedAs("BaseCharacterAnimator")] public CharacterAnimator CharacterAnimator;
         public SpriteLibrary Library;
         public SpriteRenderer Renderer;
         public List<ParticlePair> Particles;

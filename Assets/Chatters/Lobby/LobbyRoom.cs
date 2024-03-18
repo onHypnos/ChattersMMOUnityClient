@@ -48,11 +48,11 @@ namespace Chatters.Lobby
             }
             else
             {
-                CreateChatMember(ref obj).UpdateWithMessage(ref obj);
+                CreateChatMember(obj).UpdateWithMessage(ref obj);
             }
         }
 
-        private ChatMember CreateChatMember(ref ChatMemberContainer container)
+        private ChatMember CreateChatMember(ChatMemberContainer container)
         {
             var member = new ChatMember();
             var id = container.ChatType + container.UserID;

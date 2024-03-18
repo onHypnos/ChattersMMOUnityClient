@@ -287,7 +287,7 @@ GameObject:
   - component: {fileID: 3129358845571465318}
   - component: {fileID: 439089980536877943}
   - component: {fileID: 919959801329744862}
-  - component: {fileID: 3550471509473503485}
+  - component: {fileID: -7894943738654168007}
   m_Layer: 10
   m_Name: ChatterCharacter
   m_TagString: Untagged
@@ -331,7 +331,7 @@ MonoBehaviour:
   _characterMovement: {fileID: 4819784177583395339}
   _visual: {fileID: 919959801329744862}
   _collisions: {fileID: 4890643229270604588}
-  _profile: {fileID: 3550471509473503485}
+  _profile: {fileID: -7894943738654168007}
   UIManagerManager: {fileID: 3129358845571465318}
 --- !u!114 &4819784177583395339
 MonoBehaviour:
@@ -424,7 +424,7 @@ MonoBehaviour:
   - Id: MoveDust
     Particle: {fileID: 3473156423226230806}
   Builder: {fileID: 3821128155938713427}
---- !u!114 &3550471509473503485
+--- !u!114 &-7894943738654168007
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -433,9 +433,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1694762662939173193}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f32e38b378d4900a0fef80c5f93b529, type: 3}
+  m_Script: {fileID: 11500000, guid: 410f3411446744bab0f31559330db1dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _className: 
   _maximumHealth: 0
   _currentHealth: 0
   _baseDamage: 0
