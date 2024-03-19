@@ -66,9 +66,5 @@ namespace Chatters.Characters.Mediators
         {
             UIManagerManager.ShowMessage(message);
         }
-
-        
-
-        
     }
 }

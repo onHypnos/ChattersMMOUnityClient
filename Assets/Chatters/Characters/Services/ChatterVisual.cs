@@ -1,4 +1,7 @@
-﻿using Assets.PixelFantasy.PixelHeroes.Common.Scripts.CharacterScripts;
+﻿using System;
+using UniRx;
+using Assets.PixelFantasy.PixelHeroes.Common.Scripts.CharacterScripts;
+using Chatters.Characters.Mediators;
 using UnityEngine;
 using UnityEngine.U2D.Animation;
 
@@ -10,6 +13,13 @@ namespace Chatters.Characters.Services
         private SpriteLibraryAsset _currentAsset;
         [SerializeField] private SpriteLibrary _library;
 
+        public override void Init(BaseMediator.ServiceContainer serviceContainer)
+        {
+            base.Init(serviceContainer);
+            serviceContainer.BaseMediator.OnDestroyMediator.Subscribe(_ => OnDestroyDeleteAsset());
+
+        }
+
         public void SetupBuilder(CharacterBuilder ctxCharacterBuilder)
         {
             _builder = ctxCharacterBuilder;
@@ -17,7 +27,10 @@ namespace Chatters.Characters.Services
         
         public void SetupChatterVisual(Chatters.Services.SaveLoad.CharacterVisual playerSaveSavedVisual)
         {
-            Destroy(_currentAsset);
+            if (_currentAsset)
+            {
+                Destroy(_currentAsset);
+            }
             _builder.SpriteLibrary = _library;
             _builder.Head = playerSaveSavedVisual.Head;
             _builder.Ears = playerSaveSavedVisual.Ears;
@@ -32,9 +45,17 @@ namespace Chatters.Characters.Services
             _builder.Back = playerSaveSavedVisual.Back;
             _builder.Mask = playerSaveSavedVisual.Mask;
             _builder.Horns = playerSaveSavedVisual.Horns;
-            _currentAsset = _builder.Rebuild();
+            _currentAsset = _builder.Rebuild(null, _library);
         }
-        
-        
+
+        private void OnDestroyDeleteAsset()
+        {
+            if (_currentAsset)
+            {
+                Destroy(_currentAsset);
+                Resources.UnloadUnusedAssets();
+            }
+            
+        }
     }
 }

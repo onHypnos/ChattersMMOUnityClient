@@ -39,7 +39,7 @@ namespace Chatters.Characters.Mediators
             _targetProvider = provider;
             _serviceContainer = new ServiceContainer(this, _characterMovement, _visual, _collisions, uiMediator,
                 new BattleActions(this), _profile);
-            _visual.Init();
+            _visual.Init(_serviceContainer);
             _characterMovement.Init(_serviceContainer);
             _runner.Subscribe(this);
         }
@@ -70,7 +70,7 @@ namespace Chatters.Characters.Mediators
             return _targetProvider.GetTarget();
         }
 
-        public ReactiveCommand OnDestroyMediator;
+        public ReactiveCommand OnDestroyMediator = new();
         public void Dispose()
         {
             _runner.Unsubscribe(this);

@@ -1,6 +1,7 @@
 ﻿using Chatters.Characters.CharacterStates;
 using Chatters.Characters.Mediators;
 using UnityEngine;
+using UniRx;
 
 namespace Chatters.Characters.Behaviours
 {
@@ -11,24 +12,50 @@ namespace Chatters.Characters.Behaviours
             
         }
 
+        private Ctx _ctx;
+        private BaseMediator _executor;
         public BaseMediator Target = null;
-        
-        
+
+
+        public SkillExecutor(BaseMediator.ServiceContainer mediatorServiceContainer, Ctx ctx) : base(
+            mediatorServiceContainer)
+        {
+            _ctx = ctx;
+            _executor = mediatorServiceContainer.BaseMediator;
+        }
+
+        public override void StartBehaviour()
+        {
+            base.StartBehaviour();
+            if (!CheckTarget(_executor))
+            {
+                _executor.EnterState<IdleState>();
+            }
+        }
+
         public override void Execute(float deltaTime)
         {
             base.Execute(deltaTime);
         }
 
-        public SkillExecutor(BaseMediator.ServiceContainer mediatorServiceContainer, Ctx ctx) : base(mediatorServiceContainer)
+        private bool CheckTarget(BaseMediator mediator)
         {
             if (!Target)
             {
-                var target = mediatorServiceContainer.BaseMediator.GetNextTarget();
-                if (target)
+                var target = mediator.GetNextTarget();
+                if (!target)
                 {
-                    mediatorServiceContainer.BaseMediator.EnterState<IdleState>();
+                    return false;
                 }
+
+                SetNewTarget(target);
             }
+            return true;
+        }
+
+        private void SetNewTarget(BaseMediator target)
+        {
+            target.OnDestroyMediator.Subscribe(_ => CheckTarget(_executor));
         }
     }
 
