@@ -1,4 +1,5 @@
 ﻿using Chatters.Characters.Mediators;
+using Chatters.Characters.Services;
 using UnityEngine;
 using AnimationState = Chatters.Characters.Services.AnimationState;
 
@@ -10,22 +11,23 @@ namespace Chatters.Characters.Behaviours
         {
             public float MinimumWaitingTime { get; set; } 
             public float MaximumWaitingValue { get; set; }
+            public CharacterVisual Visual { get; set; }
             
-            public Ctx(float min=1f, float max= 6f)
-            {
-                MinimumWaitingTime = min;
-                MaximumWaitingValue = max;
-            }
         }
 
         private Ctx _ctx;
         private float _waitingTimeRemain = 0f;
-        
+
+        public IdleWaiting(Ctx ctx) : base()
+        {
+            _ctx = ctx;
+        }
+
         public override void StartBehaviour()
         {
             base.StartBehaviour();
             _waitingTimeRemain = Random.Range(_ctx.MinimumWaitingTime, _ctx.MaximumWaitingValue);
-            MediatorServiceContainer.Visual.SetState(AnimationState.Idle);
+            _ctx.Visual.SetState(AnimationState.Idle);
         }
 
         public override void Execute(float deltaTime)
@@ -35,10 +37,5 @@ namespace Chatters.Characters.Behaviours
         }
 
         public override bool CompleteRequirements() => _waitingTimeRemain <= 0f;
-
-        public IdleWaiting(BaseMediator.ServiceContainer mediatorServiceContainer, Ctx ctx) : base(mediatorServiceContainer)
-        {
-            _ctx = ctx;
-        }
     }
 }

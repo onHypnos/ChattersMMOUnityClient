@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Assets.PixelFantasy.PixelHeroes.Common.Scripts.CharacterScripts;
+using Chatters.Characters.Mediators;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.U2D.Animation;
@@ -10,16 +11,24 @@ namespace Chatters.Characters.Services
 {
     public class CharacterVisual : MonoBehaviour
     {
-        [FormerlySerializedAs("BaseCharacterAnimator")] public CharacterAnimator CharacterAnimator;
+        public struct Ctx
+        {
+            
+        }
+
+        private Ctx _ctx;
+        
+        public CharacterAnimator CharacterAnimator;
         public SpriteLibrary Library;
         public SpriteRenderer Renderer;
         public List<ParticlePair> Particles;
+        protected BaseMediator.ServiceContainer ServiceContainer;
 
-        public void Init()
+        public virtual void Init(BaseMediator.ServiceContainer serviceContainer)
         {
+            ServiceContainer = serviceContainer;
             CharacterAnimator.Init(this);
         }
-
 
         public void SetLayerOrder(int layerOrder)
         {

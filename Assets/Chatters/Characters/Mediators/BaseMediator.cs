@@ -1,11 +1,14 @@
 using System;
 using System.Collections.Generic;
+using Assets.PixelFantasy.PixelHeroes.Common.Scripts.CharacterScripts;
 using Chatters.Characters.BattleProfiles;
 using Chatters.Characters.CharacterStates;
 using Chatters.Characters.Services;
+using Chatters.Interfaces;
 using Chatters.Services.UI;
 using Chatters.Services.Updater;
 using Chatters.Services.Updater.Interfaces;
+using UniRx;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -22,19 +25,21 @@ namespace Chatters.Characters.Mediators
         [SerializeField] protected CharacterVisual _visual;
         [SerializeField] protected CharacterCollisionDetector _collisions;
         [SerializeField] protected Profile _profile;
+        [SerializeField] protected ITargetProvider _targetProvider;
         protected Dictionary<Type, BaseCharacterState> _states = new();
 
         private BaseCharacterState _currentState;
         private UpdateRunner _runner;
 
 
-        protected void BaseInit(int currentID,UpdateRunner runner, UIMediator uiMediator)
+        protected void BaseInit(int currentID, UpdateRunner runner, UIMediator uiMediator, ITargetProvider provider)
         {
             _id = currentID;
             _runner = runner;
+            _targetProvider = provider;
             _serviceContainer = new ServiceContainer(this, _characterMovement, _visual, _collisions, uiMediator,
                 new BattleActions(this), _profile);
-            _visual.Init();
+            _visual.Init(_serviceContainer);
             _characterMovement.Init(_serviceContainer);
             _runner.Subscribe(this);
         }
@@ -59,8 +64,20 @@ namespace Chatters.Characters.Mediators
         {
             _serviceContainer.Actions.OnDeathAnimationEnd += despawnCallback;
         }
+        
+        public BaseMediator GetNextTarget()
+        {
+            return _targetProvider.GetTarget();
+        }
 
-
+        public ReactiveCommand OnDestroyMediator = new();
+        public void Dispose()
+        {
+            _runner.Unsubscribe(this);
+            OnDestroyMediator.Execute();
+            Destroy(gameObject);
+        }
+        
         public struct ServiceContainer
         {
             public UIMediator UIMediator { get; }

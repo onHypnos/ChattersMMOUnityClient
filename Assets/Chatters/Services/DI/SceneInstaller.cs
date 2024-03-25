@@ -63,7 +63,7 @@ namespace Chatters.Services.DI
         private void BindSceneRunner(CharacterFabric fabric, EnemyFabric enemyFabric)
         {
             Container.Bind<SceneRunner>().FromInstance(_sceneRunner).AsSingle().NonLazy();
-            _sceneRunner.Init(_playerManager, fabric, enemyFabric, _wrapper, _saveLoad);
+            _sceneRunner.Init(_playerManager, fabric, enemyFabric, _wrapper, _saveLoad, _updRunner);
         }
         
         

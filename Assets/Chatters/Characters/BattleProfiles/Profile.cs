@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Chatters.Characters.BattleProfiles
@@ -16,10 +17,12 @@ namespace Chatters.Characters.BattleProfiles
 
         [Header("Skills")] 
         [SerializeField] private Dictionary<string, int> _skills = new();
+
+        
         
         public void Init()
         {
-            
+           
         }
     }
 }

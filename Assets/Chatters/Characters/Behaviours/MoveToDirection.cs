@@ -1,5 +1,7 @@
 ﻿using Chatters.Characters.Mediators;
+using Chatters.Characters.Services;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Chatters.Characters.Behaviours
 {
@@ -9,6 +11,7 @@ namespace Chatters.Characters.Behaviours
         {
             public Vector3 Direction { get; set; }
             public bool RandomDirection { get; set; }
+            public CharacterMovement Movement { get; set; }
         }
 
         private Ctx _ctx;
@@ -33,7 +36,7 @@ namespace Chatters.Characters.Behaviours
             _ctx.Direction = _ctx.Direction * -1;
         }
 
-        public MoveToDirection(BaseMediator.ServiceContainer mediatorServiceContainer, Ctx ctx) : base(mediatorServiceContainer)
+        public MoveToDirection(Ctx ctx) : base()
         {
             _ctx = ctx;
         }
@@ -42,10 +45,7 @@ namespace Chatters.Characters.Behaviours
         {
             base.Execute(deltaTime);
             _movingTimeRemain -= deltaTime;
-            if (MediatorServiceContainer.BaseCharacterMovement)
-            {
-                MediatorServiceContainer.BaseCharacterMovement.Move(_ctx.Direction, deltaTime);
-            }
+            _ctx.Movement.Move(_ctx.Direction, deltaTime);
         }
 
 

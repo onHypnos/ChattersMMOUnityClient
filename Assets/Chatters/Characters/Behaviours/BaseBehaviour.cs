@@ -7,14 +7,12 @@ namespace Chatters.Characters.Behaviours
     [Serializable]
     public abstract class BaseBehaviour
     {
-        protected BaseMediator.ServiceContainer MediatorServiceContainer;
         public bool IsComplete { get; private set; } = false;
 
         public event Action OnBehaviourComplete;
 
-        protected BaseBehaviour(BaseMediator.ServiceContainer mediatorServiceContainer)
+        protected BaseBehaviour()
         {
-            MediatorServiceContainer = mediatorServiceContainer;
         }
 
         public virtual void StartBehaviour()
