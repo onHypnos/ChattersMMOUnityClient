@@ -39,8 +39,14 @@ namespace Chatters.Characters.Mediators
             _targetProvider = provider;
             _serviceContainer = new ServiceContainer(this, _characterMovement, _visual, _collisions, uiMediator,
                 new BattleActions(this), _profile);
-            _visual.Init(_serviceContainer);
+            
+            _visual.Init(new CharacterVisual.Ctx
+            {
+                Mediator = this
+            });
             _characterMovement.Init(_serviceContainer);
+            
+            
             _runner.Subscribe(this);
         }
 

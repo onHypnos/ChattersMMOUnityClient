@@ -11,7 +11,7 @@ namespace Chatters.Characters.Services
 
         public Action<BaseMediator> OnDeathAnimationEnd;
 
-        public void DeathAnimationend()
+        public void DeathAnimationEnd()
         {
             OnDeathAnimationEnd?.Invoke(_baseMediator);
         }

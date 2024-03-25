@@ -43,7 +43,6 @@ namespace Chatters.Characters.Mediators
             {
                 Movement = _serviceContainer.BaseCharacterMovement,
                 Visual = _serviceContainer.Visual,
-
             }));
             
             _states.Add(typeof(AfkState), new AfkState());

@@ -30,7 +30,7 @@ namespace Assets.PixelFantasy.PixelHeroes.Common.Scripts.CharacterScripts
         public Texture2D Texture { get; private set; }
         private Dictionary<string, Sprite> _sprites;
 
-        public SpriteLibraryAsset Rebuild(string changed = null, SpriteLibrary existedAsset = null)
+        public SpriteLibraryAsset Rebuild(string changed = null, SpriteLibraryAsset existedAsset = null)
         {
             var width = SpriteCollection.Layers[0].Textures[0].width;
             var height = SpriteCollection.Layers[0].Textures[0].height;
@@ -120,32 +120,22 @@ namespace Assets.PixelFantasy.PixelHeroes.Common.Scripts.CharacterScripts
             SpriteLibraryAsset spriteLibraryAsset;
             if (existedAsset)
             {
-                foreach (var name in existedAsset.spriteLibraryAsset.GetCategoryNames())
-                {
-                    existedAsset.spriteLibraryAsset.RemoveCategoryLabel(null, null, true);
-                }
-                
-                foreach (var sprite in _sprites)
-                {
-                    var split = sprite.Key.Split('_');
-                    existedAsset.spriteLibraryAsset.GetCategoryNames();
-                    existedAsset.spriteLibraryAsset.AddCategoryLabel(sprite.Value, split[0], split[1]);
-                }
-
-                return existedAsset.spriteLibraryAsset;
+                spriteLibraryAsset = existedAsset;
             }
             else
             {
                 spriteLibraryAsset = ScriptableObject.CreateInstance<UnityEngine.U2D.Animation.SpriteLibraryAsset>();
-                foreach (var sprite in _sprites)
-                {
-                    var split = sprite.Key.Split('_');
-
-                    spriteLibraryAsset.AddCategoryLabel(sprite.Value, split[0], split[1]);
-                }
-                SpriteLibrary.spriteLibraryAsset = spriteLibraryAsset;
-                return spriteLibraryAsset;
             }
+            
+            foreach (var sprite in _sprites)
+            {
+                var split = sprite.Key.Split('_');
+
+                spriteLibraryAsset.AddCategoryLabel(sprite.Value, split[0], split[1]);
+            }
+            
+            SpriteLibrary.spriteLibraryAsset = spriteLibraryAsset;
+            return spriteLibraryAsset;
         }
 
         private void CapeOverlay(Color32[] cape)

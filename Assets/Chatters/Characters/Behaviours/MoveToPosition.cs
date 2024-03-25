@@ -27,7 +27,7 @@ namespace Chatters.Characters.Behaviours
         public override void Execute(float deltaTime)
         {
             base.Execute(deltaTime);
-            _ctx.MovementService.MoveTo(_ctx.MovementTarget,deltaTime);
+            _ctx.MovementService.MoveTo(_ctx.MovementTarget, deltaTime);
         }
 
         public override bool CompleteRequirements()

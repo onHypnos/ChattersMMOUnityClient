@@ -29,7 +29,7 @@ namespace Chatters.Characters.Services
 
         public void WarpTo(Vector3 newPosition)
         {
-            
+            _pivot.position = newPosition;
         }
 
         public override void Init(BaseMediator.ServiceContainer serviceContainer)

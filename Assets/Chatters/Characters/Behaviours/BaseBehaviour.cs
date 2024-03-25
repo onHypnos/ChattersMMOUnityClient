@@ -11,10 +11,6 @@ namespace Chatters.Characters.Behaviours
 
         public event Action OnBehaviourComplete;
 
-        protected BaseBehaviour()
-        {
-        }
-
         public virtual void StartBehaviour()
         {
             IsComplete = false;

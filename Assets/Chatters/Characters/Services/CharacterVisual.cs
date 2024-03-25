@@ -13,20 +13,19 @@ namespace Chatters.Characters.Services
     {
         public struct Ctx
         {
-            
+            public BaseMediator Mediator;
         }
 
-        private Ctx _ctx;
+        protected Ctx _ctx;
         
         public CharacterAnimator CharacterAnimator;
         public SpriteLibrary Library;
         public SpriteRenderer Renderer;
         public List<ParticlePair> Particles;
-        protected BaseMediator.ServiceContainer ServiceContainer;
 
-        public virtual void Init(BaseMediator.ServiceContainer serviceContainer)
+        public virtual void Init(Ctx ctx)
         {
-            ServiceContainer = serviceContainer;
+            _ctx = ctx;
             CharacterAnimator.Init(this);
         }
 

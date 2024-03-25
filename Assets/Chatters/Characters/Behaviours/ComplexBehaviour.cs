@@ -5,7 +5,7 @@ using Chatters.Characters.Mediators;
 
 namespace Chatters.Characters.Behaviours
 {
-    public class ComplexBehaviour : BaseBehaviour
+    public abstract class ComplexBehaviour : BaseBehaviour
     {
         private List<BaseBehaviour> StateBehaviours = new();
         protected BaseBehaviour CurrentBehaviour;
@@ -13,11 +13,6 @@ namespace Chatters.Characters.Behaviours
         private float _taskRepeat = -1;
         public bool BehavioursEnd = false;
 
-
-        public ComplexBehaviour() : base()
-        {
-        }
-        
         public override void StartBehaviour()
         {
             base.StartBehaviour();
