@@ -39,10 +39,24 @@ namespace Chatters.Characters.Mediators
         protected override void InitStates()
         {
             base.InitStates();
-            _states.Add(typeof(IdleState), new IdleState(_serviceContainer));
-            _states.Add(typeof(AfkState), new AfkState(_serviceContainer));
-            _states.Add(typeof(SpawningState), new SpawningState(_serviceContainer, new SpawningState.Ctx(_spawningDestinationPoint)));
-            _states.Add(typeof(FightingState), new FightingState(_serviceContainer));
+            _states.Add(typeof(IdleState), new IdleState(new IdleState.Ctx
+            {
+                Movement = _serviceContainer.BaseCharacterMovement,
+                Visual = _serviceContainer.Visual,
+
+            }));
+            
+            _states.Add(typeof(AfkState), new AfkState());
+            
+            _states.Add(typeof(SpawningState), new SpawningState(new SpawningState.Ctx
+            {
+                MovementService = _serviceContainer.BaseCharacterMovement,
+                SpawnDestination = _spawningDestinationPoint
+            }));
+            _states.Add(typeof(FightingState), new FightingState(new FightingState.Ctx()
+            {
+                
+            }));
 
             EnterState<SpawningState>();
             _states[typeof(SpawningState)].OnAllBehavioursEnd += EnterState<IdleState>;

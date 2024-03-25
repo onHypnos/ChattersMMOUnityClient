@@ -13,24 +13,18 @@ namespace Chatters.Characters.Behaviours
         }
 
         private Ctx _ctx;
-        private BaseMediator _executor;
-        public BaseMediator Target = null;
+        
 
 
-        public SkillExecutor(BaseMediator.ServiceContainer mediatorServiceContainer, Ctx ctx) : base(
-            mediatorServiceContainer)
+        public SkillExecutor(Ctx ctx) : base()
         {
             _ctx = ctx;
-            _executor = mediatorServiceContainer.BaseMediator;
         }
 
         public override void StartBehaviour()
         {
             base.StartBehaviour();
-            if (!CheckTarget(_executor))
-            {
-                _executor.EnterState<IdleState>();
-            }
+            
         }
 
         public override void Execute(float deltaTime)
@@ -38,25 +32,7 @@ namespace Chatters.Characters.Behaviours
             base.Execute(deltaTime);
         }
 
-        private bool CheckTarget(BaseMediator mediator)
-        {
-            if (!Target)
-            {
-                var target = mediator.GetNextTarget();
-                if (!target)
-                {
-                    return false;
-                }
-
-                SetNewTarget(target);
-            }
-            return true;
-        }
-
-        private void SetNewTarget(BaseMediator target)
-        {
-            target.OnDestroyMediator.Subscribe(_ => CheckTarget(_executor));
-        }
+        
     }
 
     

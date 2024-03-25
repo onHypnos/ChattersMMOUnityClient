@@ -14,7 +14,7 @@ namespace Chatters.Characters.Behaviours
         public bool BehavioursEnd = false;
 
 
-        public ComplexBehaviour(BaseMediator.ServiceContainer mediatorServiceContainer) : base(mediatorServiceContainer)
+        public ComplexBehaviour() : base()
         {
         }
         

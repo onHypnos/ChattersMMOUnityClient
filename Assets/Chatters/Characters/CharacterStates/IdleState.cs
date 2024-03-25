@@ -1,19 +1,36 @@
 ﻿using Chatters.Characters.Behaviours;
 using Chatters.Characters.Mediators;
+using Chatters.Characters.Services;
 using UnityEngine;
 
 namespace Chatters.Characters.CharacterStates
 {
     public class IdleState : BaseCharacterState
     {
-
-        public IdleState(BaseMediator.ServiceContainer mediatorServiceContainer) : base(mediatorServiceContainer)
+        public struct Ctx
         {
-            AddBehaviour(new IdleWaiting(mediatorServiceContainer, new IdleWaiting.Ctx(1f)));
-            AddBehaviour(new MoveToDirection(mediatorServiceContainer, new MoveToDirection.Ctx
+            public CharacterMovement Movement;
+            public CharacterVisual Visual;
+        }
+
+        private Ctx _ctx;
+
+        public IdleState(Ctx ctx) : base()
+        {
+            _ctx = ctx;
+            
+            AddBehaviour(new IdleWaiting(new IdleWaiting.Ctx()
+            {
+                MinimumWaitingTime = 1f,
+                MaximumWaitingValue = 6f,
+                Visual = _ctx.Visual
+            }));
+
+            AddBehaviour(new MoveToDirection(new MoveToDirection.Ctx
             {
                 Direction = new Vector3(),
-                RandomDirection = true
+                RandomDirection = true,
+                Movement = _ctx.Movement
             }));
         }
     }

@@ -1,4 +1,5 @@
 ﻿using Chatters.Characters.Mediators;
+using Chatters.Characters.Services;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -8,9 +9,10 @@ namespace Chatters.Characters.Behaviours
     {
         public struct Ctx
         {
-            public Transform MovementTransform;
+            public CharacterMovement MovementService { get; set; }
+            public Transform MovementTransform { get; set; }
             public Transform MovementTarget { get; set; }
-            public float Range;
+            public float Range { get; set; }
         }
 
         private Ctx _ctx;
@@ -24,7 +26,7 @@ namespace Chatters.Characters.Behaviours
         public override void Execute(float deltaTime)
         {
             base.Execute(deltaTime);
-            MediatorServiceContainer.BaseCharacterMovement.MoveTo(_ctx.MovementTarget.position, deltaTime);
+            _ctx.MovementService.MoveTo(_ctx.MovementTarget.position, deltaTime);
         }
 
         public override bool CompleteRequirements()
@@ -32,7 +34,7 @@ namespace Chatters.Characters.Behaviours
             return (_ctx.MovementTarget.position - _ctx.MovementTransform.position).magnitude < _ctx.Range;
         }
         
-        public FollowInRangeForTarget(BaseMediator.ServiceContainer mediatorServiceContainer, Ctx ctx) : base(mediatorServiceContainer)
+        public FollowInRangeForTarget(Ctx ctx) : base()
         {
             _ctx = ctx;
         }

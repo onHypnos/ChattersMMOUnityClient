@@ -10,16 +10,14 @@ namespace Chatters.Characters.CharacterStates
 {
     public abstract class BaseCharacterState
     {
-        protected BaseMediator.ServiceContainer MediatorServiceContainer;
 
         private List<BaseBehaviour> StateBehaviours = new();
         protected BaseBehaviour CurrentBehaviour;
         protected int CurrentTargetIndex = 0;
         protected int TaskRepeats = 0;
 
-        public BaseCharacterState(BaseMediator.ServiceContainer mediatorServiceContainer)
+        public BaseCharacterState()
         {
-            MediatorServiceContainer = mediatorServiceContainer;
         }
 
         public Action OnAllBehavioursEnd;

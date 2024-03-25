@@ -34,8 +34,13 @@ namespace Chatters.Characters.Mediators
         protected override void InitStates()
         {
             base.InitStates();
-            _states.Add(typeof(IdleState), new IdleState(_serviceContainer));
-            _states.Add(typeof(AfkState), new AfkState(_serviceContainer));
+            _states.Add(typeof(IdleState), new IdleState(new IdleState.Ctx
+            {
+                Movement = _serviceContainer.BaseCharacterMovement,
+                Visual = _serviceContainer.Visual
+
+            }));
+            _states.Add(typeof(AfkState), new AfkState());
             EnterState<IdleState>();
         }
 

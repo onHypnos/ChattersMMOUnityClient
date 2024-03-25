@@ -11,6 +11,13 @@ namespace Chatters.Characters.Services
 {
     public class CharacterVisual : MonoBehaviour
     {
+        public struct Ctx
+        {
+            
+        }
+
+        private Ctx _ctx;
+        
         public CharacterAnimator CharacterAnimator;
         public SpriteLibrary Library;
         public SpriteRenderer Renderer;

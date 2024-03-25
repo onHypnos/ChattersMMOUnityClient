@@ -8,16 +8,16 @@
 
     public enum AttackType
     {
-        phys,
-        magic
+        Phys,
+        Magic
     }
 
     [System.Flags]
     public enum WeaponType
     {
-        bow,
-        staff,
-        melee
+        Range,
+        Staff,
+        Melee
     }
     
     public abstract class BaseActiveSkill

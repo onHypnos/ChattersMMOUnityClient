@@ -20,7 +20,7 @@ namespace Chatters.Characters.Behaviours
             _ctx.ActiveSkill.Invoke();
         }
 
-        public InvokeSkill(BaseMediator.ServiceContainer mediatorServiceContainer, Ctx ctx) : base(mediatorServiceContainer)
+        public InvokeSkill(Ctx ctx) : base()
         {
             _ctx = ctx;
         }

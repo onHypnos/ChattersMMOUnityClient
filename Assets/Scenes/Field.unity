@@ -1109,7 +1109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _activityManager: {fileID: 1468807294}
-  ChatterLiveTime: 30
+  ChatterLiveTime: 10
   TrackMessages: 1
   Chatters: 1
   Subscribers: 1
